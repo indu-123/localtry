@@ -20,7 +20,7 @@ pipeline {
                     }
                 }
                 steps {
-                    sh 'docker-compose build && docker-compose up -d'
+                    sh 'docker-compose up -d'
                 }
             }
             stage("Build & Unit Testing") {
@@ -48,9 +48,6 @@ pipeline {
             }    
             
         }
-}
- 
-
 
 
 
