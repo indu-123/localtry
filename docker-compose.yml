@@ -4,9 +4,9 @@ networks:
         driver: bridge
         name: localtryprojekt
 services:
-    mysql1:
+    mysql2:
         image: mysql:latest
-        container_name: mysql1
+        container_name: mysql2
         environment:
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_USER=root
@@ -17,9 +17,9 @@ services:
         networks:
             - localtryprojekt
 
-    tomcat:
+    tomcat1:
         image: tomcat:latest
-        container_name: tomcat
+        container_name: tomcat1
         ports:
             - 8787:8080
         expose:
