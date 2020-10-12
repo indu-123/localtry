@@ -1,0 +1,28 @@
+version: '3.8'
+networks:
+    localtryprojekt:
+        driver: bridge
+        name: localtryprojekt
+services:
+    mysql1:
+        image: mysql:latest
+        container_name: mysql1
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_USER=root
+        ports:
+            - 3000:3306
+        expose:
+            - 3306
+        networks:
+            - localtryprojekt
+
+    tomcat:
+        image: tomcat:latest
+        container_name: tomcat
+        ports:
+            - 8787:8080
+        expose:
+            - 8787
+        networks:
+            - localtryprojekt
