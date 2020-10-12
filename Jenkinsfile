@@ -1,7 +1,18 @@
 String maven = "maven:3.6.3-adoptopenjdk-14"
 pipeline {
     agent any
-        stages {
+        stages {    
+            stage('Build & Unit Testing') {
+                agent {
+                    docker {
+                        image 'maven:3.6.3-adoptopenjdk-14'
+                    }
+                }
+                steps {
+                    sh 'cd app && mvn test' 
+                }
+            }
+
             stage("Run Docker-compose") {
                 steps {
                     sh "docker-compose up -d"
