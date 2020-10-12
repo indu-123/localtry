@@ -12,11 +12,6 @@ pipeline {
                     sh 'mvn compile' 
                 }
             }
-            stage("Run Docker-compose") {
-                steps {
-                    sh 'docker-compose up -d'
-                }
-            }
             stage("Build & Unit Testing") {
                 agent {
                     docker {
@@ -25,6 +20,11 @@ pipeline {
                 }
                 steps {
                     sh 'mvn test' 
+                }
+            }
+            stage("Run Docker-compose") {
+                steps {
+                    sh 'docker-compose up -d'
                 }
             }
             stage("WAR-File erstellen") {
