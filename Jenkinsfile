@@ -19,6 +19,7 @@ pipeline {
                     }
                 }
                 steps {
+                    sleep(10)
                     sh 'docker-compose up -d'
                 }
             }
