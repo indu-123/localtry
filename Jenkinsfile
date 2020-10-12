@@ -16,7 +16,7 @@ pipeline {
                 agent {
                     docker {
                         image 'docker/compose:latest'
-                        args '--network localtryprojekt -v /var/run/docker.sock:/var/run/docker.sock'
+                        args '--network localtryprojekt'
                     }
                 }
                 steps {
