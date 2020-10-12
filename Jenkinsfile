@@ -9,13 +9,22 @@ pipeline {
                     }
                 }
                 steps {
-                    sh 'mvn test' 
+                    sh 'mvn compile' 
                 }
             }
-
             stage("Run Docker-compose") {
                 steps {
                     sh "docker-compose up -d"
+                }
+            }
+            stage('Build & Unit Testing') {
+                agent {
+                    docker {
+                        image 'maven:3.6.3-adoptopenjdk-14'
+                    }
+                }
+                steps {
+                    sh 'mvn test' 
                 }
             }
             stage("WAR-File erstellen") {
