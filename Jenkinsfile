@@ -12,6 +12,17 @@ pipeline {
                     sh 'mvn compile' 
                 }
             }
+            stage('Build Pipeline Slaves via Docker-Compose') {
+                agent {
+                    docker {
+                        image 'docker/compose:latest'
+                        args '--network localtryprojekt -v /var/run/docker.sock:/var/run/docker.sock'
+                    }
+                }
+                steps {
+                    sh 'docker-compose build && docker-compose up -d'
+                }
+            }
             stage("Build & Unit Testing") {
                 agent {
                     docker {
@@ -22,11 +33,7 @@ pipeline {
                     sh 'mvn test' 
                 }
             }
-            stage("Run Docker-compose") {
-                steps {
-                    sh 'docker-compose up -d'
-                }
-            }
+
             stage("WAR-File erstellen") {
                 agent {
                     docker {
