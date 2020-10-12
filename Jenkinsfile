@@ -9,7 +9,7 @@ pipeline {
                     }
                 }
                 steps {
-                    sh 'cd app && mvn test' 
+                    sh 'mvn test' 
                 }
             }
 
