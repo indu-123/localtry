@@ -5,7 +5,7 @@ pipeline {
             stage("Maven Compile") {
                 agent {
                     docker {
-                        image 'maven:3.6.3-adoptopenjdk-14'
+                        image 'maven'
                     }
                 }
                 steps {
@@ -15,7 +15,7 @@ pipeline {
             stage("Build & Unit Testing") {
                 agent {
                     docker {
-                        image 'maven:3.6.3-adoptopenjdk-14'
+                        image 'maven'
                     }
                 }
                 steps {
