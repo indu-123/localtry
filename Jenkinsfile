@@ -25,7 +25,7 @@ pipeline {
             stage('Build Pipeline Slaves via Docker-Compose') {
                 agent{
                     docker{
-                        image 'docker/compose:latest'
+                        image 'docker-compose:latest'
                         args '--network localtryprojekt -v /var/run/docker.sock:/var/run/docker.sock'
                     }
                     environment {
