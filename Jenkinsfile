@@ -37,7 +37,7 @@ pipeline {
                     sh 'docker-compose up -d'
                 }
             }
-            stage("WAR-File erstellen") {
+            stage("WAR-File erstelle") {
                 agent {
                     docker {
                         image 'maven'
