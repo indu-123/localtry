@@ -12,7 +12,7 @@
 	</parent>
 
 	<groupId>de.awacademy</groupId>
-	<artifactId>spring-boot-webblog</artifactId>
+	<artifactId>NGINY</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<packaging>war</packaging> <!-- Deploy Spring Boot to Tomcat -->
