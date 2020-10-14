@@ -23,11 +23,7 @@ pipeline {
                 }
             }
             stage('Build Pipeline Slaves via Docker-Compose') {
-                agent {
-                    docker {
-                        image 'docker/compose:latest'
-                    }
-                }
+                agent any          
                 steps {
                     sleep(20)
                     sh 'docker-compose up -d'
