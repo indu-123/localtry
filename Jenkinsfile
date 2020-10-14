@@ -24,7 +24,10 @@ pipeline {
             }
             stage('Build Pipeline Slaves via Docker-Compose') {
                 agent{
-                    image 'docker/compose:latest'              
+                    docker{
+                        image 'docker/compose:latest'   
+                        args '--network localtryprojekt'           
+                    }
                 }
                 steps {
                     sh 'docker-compose up -d'
