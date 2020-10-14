@@ -44,7 +44,6 @@ pipeline {
                     }
                 }
                 steps {
-                    sleep(20)
                     sh 'mvn clean package'
                 }
             }    
