@@ -61,6 +61,5 @@ pipeline {
                     ansiblePlaybook colorized: true, disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory', playbook: 'deploy.yml'
                 }
             }        
-        }
-    
+        }  
 }
