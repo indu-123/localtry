@@ -1,8 +1,8 @@
 version: '3.8'
 networks:
-    trialnetwork:
+    localtryprojekt:
         driver: bridge
-        name: trialnetwork
+        name: localtryprojekt
 services:
     mysql2:
         image: mysql:latest
@@ -15,7 +15,7 @@ services:
         expose:
             - 3306
         networks:
-            - trialnetwork
+            - localtryprojekt
 
     tomcat1:
         image: tomcat:latest
@@ -25,4 +25,4 @@ services:
         expose:
             - 8787
         networks:
-            - trialnetwork
+            - localtryprojekt
