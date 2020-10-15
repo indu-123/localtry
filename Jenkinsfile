@@ -53,12 +53,20 @@ pipeline {
                     sh 'mvn clean package'
                 }
             }  
-            stage("deploy to nexus") {
+/*            stage("deploy to nexus") {
                 steps {
                     withCredentials([usernamePassword(credentialsId: 'nexus-credentials', passwordVariable: 'nexus_pass', usernameVariable: 'nexus_user')]) {
                     }
                         sh 'mvn deploy -s settings.xml'
                         args '--network localtryprojekt -v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }*/
+            stage{
+                steps {
+                    configFileProvider(
+                        [configFile(fileId: 'indusettings', variable: 'MAVEN_SETTINGS')]) {
+                        sh 'mvn -s $MAVEN_SETTINGS clean deploy'
+                        }
                 }
             }
             stage("deploy War-file to tomcat") {
