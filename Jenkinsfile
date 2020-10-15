@@ -50,13 +50,13 @@ pipeline {
                     sh 'mvn clean package'
                 }
             }  
-//            stage("deploy to nexus") {
-//                steps {
-//                    withCredentials([usernamePassword(credentialsId: 'nexus-credentials', passwordVariable: 'nexus_pass', usernameVariable: 'nexus_user')]) {                }
-//                        sh 'mvn deploy -s settings.xml'
-//                    }
-//                }
-//            }
+            stage("deploy to nexus") {
+                steps {
+                    withCredentials([usernamePassword(credentialsId: 'nexus-credentials', passwordVariable: 'nexus_pass', usernameVariable: 'nexus_user')]) {
+                    }
+                        sh 'mvn deploy -s settings.xml'
+                }
+            }
             stage("deploy War-file to tomcat") {
                 steps {
                     ansiblePlaybook colorized: true, disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory', playbook: 'deploy.yml'
