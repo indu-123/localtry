@@ -28,6 +28,17 @@ pipeline {
                     sh 'docker-compose up -d'
                 }
             }
+            stage("Maven Install") {
+                agent {
+                    docker {
+                        image 'maven'
+                        args '--network localtryprojekt'
+                    }
+                }
+                steps {
+                    sh 'mvn clean install'
+                }
+            }  
             stage("WAR-File erstelle") {
                 agent {
                     docker {
@@ -52,5 +63,5 @@ pipeline {
                 }
             }        
         }
-    }
+    
 }
