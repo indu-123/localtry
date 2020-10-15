@@ -61,7 +61,7 @@ pipeline {
                         args '--network localtryprojekt -v /var/run/docker.sock:/var/run/docker.sock'
                 }
             }*/
-            stage{
+            stage("deploy to nexus using configFileProvider"){
                 steps {
                     configFileProvider(
                         [configFile(fileId: 'indusettings', variable: 'MAVEN_SETTINGS')]) {
