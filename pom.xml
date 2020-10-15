@@ -85,7 +85,7 @@
     		<artifactId>tomcat7-maven-plugin</artifactId>
     		<version>2.2</version>
     		<configuration>
-        	<url>http://localhost:8787</url>
+        	<url>http://52.233.247.20:8082</url>
         	<server>tomcat</server>
         	<username>admin1</username>
         	<password>admin1</password>
