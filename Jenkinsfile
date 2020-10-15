@@ -1,6 +1,6 @@
 String maven = "maven:3.6.3-adoptopenjdk-14"
 pipeline {
-    agent any
+    agent none
         stages {
             stage("Maven Compile") {
                 agent {
@@ -52,4 +52,5 @@ pipeline {
                 }
             }        
         }
+    }
 }
