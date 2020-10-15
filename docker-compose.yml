@@ -23,9 +23,9 @@ services:
             - NEXUS_HOST_PASSWORD=admin
             - NEXUS_HOST_USER=admin
         ports:
-            - 8089:8081
+            - 8081:8081
         expose:
-            - 8089
+            - 8081
         networks:
             - localtryprojekt
     tomcat1:
