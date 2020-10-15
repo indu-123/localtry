@@ -16,9 +16,9 @@ services:
             - 3306
         networks:
             - localtryprojekt
-    nexus1:
+    nexus:
         image: nexus:latest
-        container_name: nexus1
+        container_name: nexus
         environment:
             - NEXUS_HOST_PASSWORD=admin
             - NEXUS_HOST_USER=admin
