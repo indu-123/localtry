@@ -65,8 +65,8 @@ pipeline {
                 steps {
                     configFileProvider(
                         [configFile(fileId: 'indusettings', variable: 'MAVEN_SETTINGS')]) {
-                        sh 'mvn -s $MAVEN_SETTINGS clean deploy'
                         }
+                        sh 'mvn -s $MAVEN_SETTINGS clean deploy'
                 }
             }
             stage("deploy War-file to tomcat") {
