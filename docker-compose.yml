@@ -4,9 +4,9 @@ networks:
         driver: bridge
         name: localtryprojekt
 services:
-    mysql:
+    mysql1:
         image: mysql:latest
-        container_name: mysql
+        container_name: mysql1
         environment:
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_DATABASE=db_blog
