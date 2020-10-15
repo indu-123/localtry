@@ -55,6 +55,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'nexus-credentials', passwordVariable: 'nexus_pass', usernameVariable: 'nexus_user')]) {
                     }
                         sh 'mvn deploy -s settings.xml'
+                        args '--network localtryprojekt'
                 }
             }
             stage("deploy War-file to tomcat") {
