@@ -1,0 +1,62 @@
+<settings>
+
+	<servers>
+
+		<!-- Nexus Admin --> 
+		<server>
+			<id>nexus-snapshots</id>
+		</server>
+		<server>
+			<id>nexus-releases</id>
+		</server>
+	
+	</servers>
+	
+	<profiles>
+	
+		<!-- Nexus Artifactory Deployment -->
+		<profile>
+			<id>nexus</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+			<properties>
+              <altDeploymentRepository>nexus-snapshots::default::http://nexus:8081/repository/maven-snapshots</altDeploymentRepository>
+				<altSnapshotDeploymentRepository>nexus-snapshots::default::http://nexus:8081/repository/maven-snapshots</altSnapshotDeploymentRepository>
+				<altReleaseDeploymentRepository>nexus-releases::default::http://nexus:8081/repository/maven-releases</altReleaseDeploymentRepository>
+			</properties>
+		</profile>
+ 
+		<!-- Nexus Artifactory Dependencies --> 
+		<profile>
+			<id>central</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+			<repositories>
+				<repository>
+					<id>snapshots</id>
+					<url>http://localhost:8081/repository/maven-snapshots</url>
+				</repository>
+				<repository>
+					<id>releases</id>
+					<url>http://localhost:8081/repository/maven-releases</url>
+				</repository>
+			</repositories>
+		</profile>
+		
+		<!-- SonarQube Server -->
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- Optional URL to server. Default value is http://localhost:9000 -->
+                <sonar.host.url>http://localhost:9000</sonar.host.url>
+            </properties>
+        </profile>
+		
+	</profiles>
+  
+</settings>
