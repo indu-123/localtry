@@ -22,7 +22,6 @@ services:
         environment:
             - NEXUS_HOST_PASSWORD=admin
             - NEXUS_HOST_USER=admin
-
         ports:
             - 8089:8081
         expose:
