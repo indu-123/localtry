@@ -69,10 +69,15 @@ pipeline {
                         sh 'mvn -s $MAVEN_SETTINGS clean deploy'
                 }
             }
-            stage("deploy War-file to tomcat") {
+/*            stage("deploy War-file to tomcat") {
                 steps {
                     ansiblePlaybook colorized: true, disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory', playbook: 'deploy.yml'
                 }
-            }        
+            } */  
+            stage("deploy War-file to tomcat") {
+                steps {
+                    sh 'mvn -s settings.xml tomcat7:deploy'
+                }
+            }
         }  
 }
