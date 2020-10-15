@@ -55,7 +55,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'nexus-credentials', passwordVariable: 'nexus_pass', usernameVariable: 'nexus_user')]) {
                     }
                         sh 'mvn deploy -s settings.xml'
-                        args '--network localtryprojekt'
+                        args '--network localtryprojekt -v /var/run/docker.sock:/var/run/docker.sock'
                 }
             }
             stage("deploy War-file to tomcat") {
