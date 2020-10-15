@@ -1,0 +1,10 @@
+---
+- name: name of playbook
+  hosts: all
+  connection: docker
+  tasks:
+    - name: Copy war-file from Jenkins to tomcat
+      copy:
+        src: /var/jenkins_home/workspace/locattryprojekt_main@2/target/NGINY.war
+        dest: /usr/local/tomcat/webapps
+        mode: '0644'

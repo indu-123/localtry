@@ -38,7 +38,11 @@ pipeline {
                 steps {
                     sh 'mvn clean package'
                 }
-            }    
-            
+            }  
+            stage("deploy War-file to tomcat") {
+                steps {
+                    ansiblePlaybook colorized: true, disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory', playbook: 'deploy.yml'
+                }
+            }        
         }
 }
