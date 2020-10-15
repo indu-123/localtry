@@ -75,6 +75,11 @@ pipeline {
                 }
             } */  
             stage("deploy War-file to tomcat") {
+                agent {
+                    docker {
+                        image 'maven'
+                    }
+                }
                 steps {
                     sh 'mvn -s settings.xml tomcat7:deploy'
                 }
