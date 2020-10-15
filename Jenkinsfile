@@ -22,7 +22,7 @@ pipeline {
                     sh 'mvn test' 
                 }
             }
-            stage('Build Pipeline Slaves via Docker-Compose') {
+            stage("Build Pipeline Slaves via Docker-Compose") {
                 agent any
                 steps {
                     sh 'docker-compose up -d'
