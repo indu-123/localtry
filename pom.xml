@@ -87,10 +87,10 @@
     		<artifactId>tomcat7-maven-plugin</artifactId>
     		<version>2.2</version>
     		<configuration>
-        	<url>http://52.233.247.20:8082</url>
+        	<url>http://localhost:8787/manager/text</url>
         	<server>tomcat</server>
         	<username>tomcat</username>
-        	<password>s3cret</password>
+        	<password>must-be-changed</password>
         	<path>/${project.artifactId}</path>
         	<update>true</update>
      		</configuration>
