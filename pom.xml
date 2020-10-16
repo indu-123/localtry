@@ -80,6 +80,8 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+<!--new plugin-->
+
 		<plugin>
     		<groupId>org.apache.tomcat.maven</groupId>
     		<artifactId>tomcat7-maven-plugin</artifactId>
@@ -87,12 +89,13 @@
     		<configuration>
         	<url>http://52.233.247.20:8082</url>
         	<server>tomcat</server>
-        	<username>admin1</username>
-        	<password>admin1</password>
+        	<username>tomcat</username>
+        	<password>s3cret</password>
         	<path>/${project.artifactId}</path>
         	<update>true</update>
      		</configuration>
 		</plugin>
+<!--new pkugin-->
 		</plugins>
 	</build>
 
