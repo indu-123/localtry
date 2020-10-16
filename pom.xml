@@ -87,7 +87,7 @@
     		<artifactId>tomcat7-maven-plugin</artifactId>
     		<version>2.2</version>
     		<configuration>
-        	<url>http://localhost:8787/manager/text</url>
+        	<url>http://localhost:8787/role1/text</url>
         	<server>tomcat</server>
         	<username>tomcat</username>
         	<password>must-be-changed</password>
