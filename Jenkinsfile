@@ -1,8 +1,11 @@
 String maven = "maven:3.6.3-adoptopenjdk-14"
 pipeline {
-    agent any
+    agent none
         environment{
             NEXUS_HOST = 'nexus:8081'
+            NEXUS_USERNAME = 'admin'
+            NEXUS_PASSWORD = 'admin'
+            SONARQUBE_HOST = 'sonarqube:9000'
         }
         stages {
             stage("Maven Compile") {
@@ -51,6 +54,7 @@ pipeline {
                 steps {
                     sleep(10)
                     sh 'mvn clean package'
+                    sh 'ls target'
                 }
             } 
             stage("deploy to sonarqube") {
@@ -61,7 +65,7 @@ pipeline {
                     }
                 }
                 steps {
-                sh 'mvn -s settings.xml clean verify sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=1881e72c76288e59801498bc865c9d40efb1cd4d -Dsonar.projectKey=localtry -Dsonar.projectName=localtry -Dsonar.projectVersion=1'
+                    sh 'mvn -s settings.xml clean verify sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=1881e72c76288e59801498bc865c9d40efb1cd4d -Dsonar.projectName=localtry -Dsonar.projectVersion=1'
                 }
             }
             stage("deploy to nexus") {
@@ -72,9 +76,9 @@ pipeline {
                     }
                 }
                 steps {
-                    withCredentials([usernamePassword(credentialsId: 'nexus-credentials', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_USER         ')]) {
+                    withCredentials([usernamePassword(credentialsId: 'nexus-credentials', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_USER')]) {                
+                        sh 'mvn -s settings.xml deploy'
                     }
-                        sh 'mvn deploy -s settings.xml'
                 }
             }
 
