@@ -81,7 +81,7 @@ pipeline {
                     ansiblePlaybook colorized: true, disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory', playbook: 'deploy.yml'
                 }
             } */  
-            stage("deploy War-file to tomcat") {
+/*            stage("deploy War-file to tomcat") {
                 agent {
                     docker {
                         image 'maven'
@@ -90,6 +90,6 @@ pipeline {
                 steps {
                     sh 'mvn -s settings.xml tomcat7:deploy'
                 }
-            }
+            }*/
         }  
 }
