@@ -62,6 +62,13 @@ pipeline {
                 }
             }*/
             stage("deploy to nexus using configFileProvider"){
+                agent {
+                    docker {
+                        image 'maven'
+                        args '--network localtryprojekt'
+                    }
+                }
+
                 steps {
                     configFileProvider(
                         [configFile(fileId: 'indusettings', variable: 'MAVEN_SETTINGS')]) {
