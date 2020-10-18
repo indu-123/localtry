@@ -71,6 +71,19 @@
 		</dependency>
 
 	</dependencies>
+	<distributionManagement>
+    <repository>
+        <id>releases</id>
+        <name>Releases</name>
+        <url>http://localHost:8080/repository/YourRepo/</url>
+    </repository>
+
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>Snapshots</name>
+        <url>http://localHost:8080/repository/YourRepo/</url>
+    </snapshotRepository>
+</distributionManagement>
 
 	<build>
 		<finalName>${artifactId}</finalName> <!-- Deploy Spring Boot to Tomcat -->
