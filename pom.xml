@@ -70,7 +70,7 @@
 			<scope>provided</scope>
 		</dependency>
 
-<!--	</dependencies>
+<	</dependencies>
 	<distributionManagement>
     <repository>
         <id>releases</id>
@@ -83,10 +83,10 @@
         <name>Snapshots</name>
         <url>http://localhost:8081/repository/NGINY/</url>
     </snapshotRepository>
-</distributionManagement> -->
+</distributionManagement> 
 
 	<build>
-<!--	<finalName>${artifactId}</finalName> --><!-- Deploy Spring Boot to Tomcat -->
+	<finalName>${artifactId}</finalName> <!-- Deploy Spring Boot to Tomcat -->
 		
 		<plugins>
 			<plugin>
