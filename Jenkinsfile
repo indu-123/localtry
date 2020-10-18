@@ -53,7 +53,7 @@ pipeline {
                     sh 'mvn clean package'
                 }
             }  
-                stage("deploy to nexus") {
+            stage("deploy to nexus") {
                 agent {
                     docker {
                         image 'maven'
@@ -65,7 +65,8 @@ pipeline {
                     }
                         sh 'mvn deploy -s settings.xml'
                 }
-                stage("deploy to sonarqube") {
+            }
+            stage("deploy to sonarqube") {
                 agent {
                     docker {
                         image 'maven'
@@ -75,6 +76,7 @@ pipeline {
                 steps {
                 sh 'mvn -s settings.xml clean verify sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=1881e72c76288e59801498bc865c9d40efb1cd4d -Dsonar.projectKey=localtry -Dsonar.projectName=localtry -Dsonar.projectVersion=1'
                 }
+            }
 
 /*            stage("deploy to nexus using configFileProvider"){
                 agent {
