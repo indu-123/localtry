@@ -57,17 +57,6 @@ pipeline {
                     sh 'ls target'
                 }
             } 
-            stage("deploy to sonarqube") {
-                agent {
-                    docker {
-                        image 'maven'
-                        args '--network localtryprojekt'
-                    }
-                }
-                steps {
-                    sh 'mvn -s settings.xml clean verify sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=1881e72c76288e59801498bc865c9d40efb1cd4d -Dsonar.projectName=localtry -Dsonar.projectVersion=1'
-                }
-            }
             stage("deploy to nexus") {
                 agent {
                     docker {
@@ -79,6 +68,17 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'nexus-credentials', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_USER')]) {                
                         sh 'mvn -s settings.xml deploy'
                     }
+                }
+            }
+            stage("deploy to sonarqube") {
+                agent {
+                    docker {
+                        image 'maven'
+                        args '--network localtryprojekt'
+                    }
+                }
+                steps {
+                    sh 'mvn -s settings.xml clean verify sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=1881e72c76288e59801498bc865c9d40efb1cd4d -Dsonar.projectName=localtry -Dsonar.projectVersion=1'
                 }
             }
 
