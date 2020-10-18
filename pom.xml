@@ -70,51 +70,14 @@
 			<scope>provided</scope>
 		</dependency>
 
-<	</dependencies>
-	<distributionManagement>
-    <repository>
-        <id>releases</id>
-        <name>Releases</name>
-        <url>http://localhost:8081/repository/NGINY/</url>
-    </repository>
-
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>Snapshots</name>
-        <url>http://localhost:8081/repository/NGINY/</url>
-    </snapshotRepository>
-</distributionManagement> 
 
 	<build>
-	<finalName>${artifactId}</finalName> <!-- Deploy Spring Boot to Tomcat -->
 		
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-<!--new plugin-->
-
-	<!--<plugin>
-    		<groupId>org.apache.tomcat.maven</groupId>
-    		<artifactId>tomcat7-maven-plugin</artifactId>
-    		<version>2.2</version>
-    		<configuration>
-        	<url>http://localhost:8080/manager/text</url>
-        	<server>tomcat</server>
-        	<username>tomcat</username>
-        	<password></password>
-        	<path>/${project.artifactId}</path>
-        	<update>true</update>
-     		</configuration>
-		</plugin> -->
-<!--new pkugin-->
-<!--			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-				</configuration>
-			</plugin> -->
 		</plugins>
 	</build>
 
