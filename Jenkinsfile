@@ -1,8 +1,8 @@
 String maven = "maven:3.6.3-adoptopenjdk-14"
 pipeline {
-    agent any
+    agent none
         environment{
-            NEXUS_HOST='nexus:8081'
+            NEXUS_HOST = 'nexus:8081'
         }
         stages {
             stage("Maven Compile") {
