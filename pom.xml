@@ -86,7 +86,7 @@
 </distributionManagement> -->
 
 	<build>
-		<finalName>${artifactId}</finalName> <!-- Deploy Spring Boot to Tomcat -->
+<!--	<finalName>${artifactId}</finalName> --><!-- Deploy Spring Boot to Tomcat -->
 		
 		<plugins>
 			<plugin>
