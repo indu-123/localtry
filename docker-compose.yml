@@ -17,6 +17,16 @@ services:
             - 3306
         networks:
             - localtryprojekt
+    nexus1:
+        image: mysql:latest
+        container_name: nexus1
+        ports:
+            - 8085:8081
+        expose:
+            - 8085
+        networks:
+            - localtryprojekt
+            
     tomcat1:
         image: tomcat:latest
         container_name: tomcat1

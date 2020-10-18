@@ -1,25 +1,31 @@
 <settings>
-
 	<servers>
 
 		<!-- Nexus Admin --> 
 		<server>
 			<id>nexus-snapshots</id>
+			<username>${NEXUS_USER}</username>
+			<password>${NEXUS_PASSWORD}</password>
 		</server>
 		<server>
 			<id>nexus-releases</id>
-		</server>
-
-		<server>
-    		<id>TomcatServer</id>
-    		<username>tomcat</username>
-    		<password>must-be-changed</password>
+			<username>${NEXUS_USER}</username>
+			<password>${NEXUS_PASSWORD}</password>
 		</server>
 	
 	</servers>
 	
+	<pluginGroups>
+	
+		<pluginGroup>videa.services</pluginGroup>
+		<pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+		
+	</pluginGroups>
+
+
 	<profiles>
 	
+		
 		<!-- Nexus Artifactory Deployment -->
 		<profile>
 			<id>nexus</id>
@@ -27,9 +33,10 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
 			<properties>
-              <altDeploymentRepository>nexus-snapshots::default::http://nexus:8081/repository/maven-snapshots</altDeploymentRepository>
-				<altSnapshotDeploymentRepository>nexus-snapshots::default::http://nexus:8081/repository/maven-snapshots</altSnapshotDeploymentRepository>
-				<altReleaseDeploymentRepository>nexus-releases::default::http://nexus:8081/repository/maven-releases</altReleaseDeploymentRepository>
+				<deployAtEnd>true</deployAtEnd>
+				<altDeploymentRepository>nexus-snapshots::default::http://${NEXUS_HOST}/repository/maven-snapshots</altDeploymentRepository>
+				<altSnapshotDeploymentRepository>nexus-snapshots::default::http://${NEXUS_HOST}/repository/maven-snapshots</altSnapshotDeploymentRepository>
+				<altReleaseDeploymentRepository>nexus-releases::default::http://${NEXUS_HOST}/repository/maven-releases</altReleaseDeploymentRepository>
 			</properties>
 		</profile>
  
@@ -42,11 +49,7 @@
 			<repositories>
 				<repository>
 					<id>snapshots</id>
-					<url>http://localhost:8081/repository/maven-snapshots</url>
-				</repository>
-				<repository>
-					<id>releases</id>
-					<url>http://localhost:8081/repository/maven-releases</url>
+					<url>http://${NEXUS_HOST}/repository/maven-snapshots</url>
 				</repository>
 			</repositories>
 		</profile>
@@ -59,10 +62,14 @@
             </activation>
             <properties>
                 <!-- Optional URL to server. Default value is http://localhost:9000 -->
-                <sonar.host.url>http://localhost:9000</sonar.host.url>
+                <sonar.host.url>http://${SONARQUBE_HOST}</sonar.host.url>
             </properties>
         </profile>
 		
 	</profiles>
-  
+	
+	<activeProfiles>
+      <activeProfile>nexus</activeProfile>
+    </activeProfiles>
+
 </settings>

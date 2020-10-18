@@ -82,19 +82,19 @@
 			</plugin>
 <!--new plugin-->
 
-		<plugin>
+	<!--<plugin>
     		<groupId>org.apache.tomcat.maven</groupId>
     		<artifactId>tomcat7-maven-plugin</artifactId>
     		<version>2.2</version>
     		<configuration>
-        	<url>http://localhost:8787/role1/text</url>
+        	<url>http://localhost:8080/manager/text</url>
         	<server>tomcat</server>
         	<username>tomcat</username>
-        	<password>must-be-changed</password>
+        	<password></password>
         	<path>/${project.artifactId}</path>
         	<update>true</update>
      		</configuration>
-		</plugin>
+		</plugin> -->
 <!--new pkugin-->
 		</plugins>
 	</build>

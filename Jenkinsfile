@@ -53,14 +53,14 @@ pipeline {
                     sh 'mvn clean package'
                 }
             }  
-/*            stage("deploy to nexus") {
+/*                stage("deploy to nexus") {
                 steps {
-                    withCredentials([usernamePassword(credentialsId: 'nexus-credentials', passwordVariable: 'nexus_pass', usernameVariable: 'nexus_user')]) {
+                    withCredentials([usernamePassword(credentialsId: 'nexus-credentials', passwordVariable: 'nexus_password', usernameVariable: 'nexus_user')]) {
                     }
                         sh 'mvn deploy -s settings.xml'
                         args '--network localtryprojekt -v /var/run/docker.sock:/var/run/docker.sock'
                 }
-            }
+            }*/
             stage("deploy to nexus using configFileProvider"){
                 steps {
                     configFileProvider(
@@ -69,7 +69,7 @@ pipeline {
                         sh 'mvn -s $MAVEN_SETTINGS clean deploy'
                 }
             }
-            stage("deploy War-file to tomcat") {
+/*            stage("deploy War-file to tomcat") {
                 steps {
                     ansiblePlaybook colorized: true, disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory', playbook: 'deploy.yml'
                 }
