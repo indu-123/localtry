@@ -18,6 +18,7 @@ services:
         networks:
             - localtryprojekt
     nexus:
+        image: nexus:latest
         container_name: nexus
         ports:
             - 8081:8081

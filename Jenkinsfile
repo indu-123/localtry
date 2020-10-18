@@ -65,15 +65,14 @@ pipeline {
                 agent {
                     docker {
                         image 'maven'
-                        args '--network localtryprojekt'
                     }
                 }
-
                 steps {
                     configFileProvider(
                         [configFile(fileId: 'indusettings', variable: 'MAVEN_SETTINGS')]) {
                         }
                         sh 'mvn -s $MAVEN_SETTINGS clean deploy'
+                        args '--network localtryprojekt -v /var/run/docker.sock:/var/run/docker.sock'
                 }
             }
 /*            stage("deploy War-file to tomcat") {
